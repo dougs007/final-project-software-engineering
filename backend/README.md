@@ -22,3 +22,11 @@ To see the Swagger, check this link here.
     http://localhost:8080/swagger-ui/index.html
 ```
 
+
+### To do
+
+- [X] Unity endpoints.
+- [ ] Professor endpoints.
+- [ ] Students endpoints.
+- [ ] Plans endpoints.
+
