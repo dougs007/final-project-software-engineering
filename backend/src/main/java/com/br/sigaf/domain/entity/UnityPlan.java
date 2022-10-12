@@ -1,4 +1,4 @@
-package com.br.sigaf.entity;
+package com.br.sigaf.domain.entity;
 
 import lombok.Data;
 

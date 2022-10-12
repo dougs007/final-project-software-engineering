@@ -1,4 +1,4 @@
-package com.br.sigaf.entity;
+package com.br.sigaf.domain.entity;
 
 import lombok.Data;
 
@@ -10,13 +10,15 @@ import java.time.LocalDate;
 
 @Entity
 @Data
-public class Coupon {
+public class Alert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String description;
-    private LocalDate dateCreated;
-    private Boolean isValid;
+    private LocalDate showDate;
+    private Boolean readingConfirmation;
+
+//    private List<User> students;
 }

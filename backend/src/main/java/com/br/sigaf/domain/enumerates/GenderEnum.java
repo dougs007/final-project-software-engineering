@@ -1,4 +1,4 @@
-package com.br.sigaf.enumerates;
+package com.br.sigaf.domain.enumerates;
 
 public enum GenderEnum {
     MALE(1, "Male", "Masculino"),

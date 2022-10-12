@@ -1,6 +1,5 @@
-package com.br.sigaf.entity;
+package com.br.sigaf.domain.entity;
 
-import com.br.sigaf.enumerates.GenderEnum;
 import lombok.Data;
 
 import javax.persistence.Entity;
@@ -10,13 +9,13 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class User {
+public class Unity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long      id;
+    private Long id;
 
-    private String      name;
-    private String      celphone;
-    private GenderEnum  gender;
-    private String      email;
+    private String name;
+    private String city;
+    private Double state;
+    private Integer postalCode;
 }

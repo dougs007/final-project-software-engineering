@@ -1,4 +1,4 @@
-package com.br.sigaf.enumerates;
+package com.br.sigaf.domain.enumerates;
 
 public enum TrainingTypeEnum {
     BOTTOM(1, "Bottom", "Inferior"),

@@ -1,8 +1,6 @@
-package com.br.sigaf.entity;
+package com.br.sigaf.domain.entity;
 
-import com.br.sigaf.enumerates.GenderEnum;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 

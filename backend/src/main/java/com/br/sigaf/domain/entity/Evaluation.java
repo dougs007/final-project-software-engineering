@@ -1,4 +1,4 @@
-package com.br.sigaf.entity;
+package com.br.sigaf.domain.entity;
 
 import lombok.Data;
 
@@ -7,19 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Data
-public class Alert {
+public class Evaluation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private LocalDate date;
     private String description;
-    private LocalDate showDate;
-    private Boolean readingConfirmation;
 
-//    private List<User> students;
+//    private User student;
 }
