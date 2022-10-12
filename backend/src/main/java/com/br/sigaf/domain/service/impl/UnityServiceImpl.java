@@ -45,7 +45,9 @@ public class UnityServiceImpl implements UnityService {
 
     @Override
     public Optional<Unity> getById(Long id) {
-        return this.repository.findById(id);
+        return Optional.ofNullable(this.repository.findById(id).orElseThrow(
+                () -> new RegraNegocioException("Recurso não encontrado")
+        ));
     }
 
     @Override

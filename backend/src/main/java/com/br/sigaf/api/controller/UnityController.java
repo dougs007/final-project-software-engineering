@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/units")
@@ -26,6 +27,12 @@ public class UnityController {
     public ResponseEntity<Unity> save(@RequestBody UnityDTO dto) {
         Unity unity = service.save(dto);
         return new ResponseEntity<>(unity, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Unity> getById(@PathVariable Long id) {
+        Optional<Unity> unity = service.getById(id);
+        return new ResponseEntity<>(unity.get(), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
