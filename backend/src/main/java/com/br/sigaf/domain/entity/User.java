@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "usuario")
 @Data
 @Builder
 @NoArgsConstructor
