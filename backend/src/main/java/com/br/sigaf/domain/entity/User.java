@@ -1,11 +1,7 @@
 package com.br.sigaf.domain.entity;
 
-import com.br.sigaf.domain.enumerates.GenderEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,20 +10,30 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long      id;
+    private Long id;
 
     @Column(nullable = false)
-    private String      name;
-    private String      celphone;
-    private GenderEnum  gender;
+    private String name;
+    private String celphone;
+
+    //    @Column(columnDefinition = "default " + GenderEnum.OTHERS.getCode())
+    @Column(columnDefinition = "integer default " + 1)
+    private Integer genderId;
+    //    @Column(columnDefinition = "default " + RoleEnum.ROLE_STUDENT.getCode())
+    @Column(columnDefinition = "integer default " + 1)
+    private Integer roleId;
+
     @Column(nullable = false)
-    private String      email;
+    private String email;
     @Column(nullable = false)
     @JsonIgnore
     private String password;
 
+    private Integer userId;
 }
