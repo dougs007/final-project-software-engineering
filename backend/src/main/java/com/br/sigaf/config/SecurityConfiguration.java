@@ -59,6 +59,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
 
+            .antMatchers(HttpMethod.GET, "/").permitAll()
+            .antMatchers(HttpMethod.GET, "/swagger-ui*").permitAll()
+            .antMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
             .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
             .antMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
             .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
@@ -72,9 +75,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .addFilterBefore( jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class )
+            .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class )
         ;
-
     }
 
     @Bean
