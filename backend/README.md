@@ -1,6 +1,6 @@
 # Backend
 
-This project was builted using Java
+This project was builted in Java using Spring Boot. Click [here](http://apisigaf-env-1.eba-rgmb2std.us-east-1.elasticbeanstalk.com/) to see the production environment.
 
 
 ## Technologies
@@ -26,7 +26,7 @@ To see the Swagger, check this link here.
 ### To do
 
 - [X] Unity endpoints.
-- [ ] Professor endpoints.
-- [ ] Students endpoints.
-- [ ] Plans endpoints.
+- [X] Professor endpoints.
+- [X] Students endpoints.
+- [X] Plans endpoints.
 
