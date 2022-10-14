@@ -29,4 +29,7 @@ To see the Swagger, check this link here.
 - [X] Professor endpoints.
 - [X] Students endpoints.
 - [X] Plans endpoints.
+- [X] Puted v1 on AWS.
+- [ ] Fix documentation about the local environment.
+
 
