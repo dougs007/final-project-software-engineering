@@ -1,6 +1,7 @@
 package com.br.sigaf.config;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,39 +55,43 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+        String[] AUTH_WHITELIST = {
+            // -- swagger ui
+            "/swagger-ui*",
+            "/swagger-ui/**",
+            "/h2-console/**"
+        };
+
         http
             .csrf().disable()
             .authorizeRequests()
             .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
 
             .antMatchers(HttpMethod.GET, "/").permitAll()
-            .antMatchers(HttpMethod.GET, "/swagger-ui*").permitAll()
-            .antMatchers(HttpMethod.GET, "/swagger-ui/**").permitAll()
             .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
             .antMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
             .antMatchers(HttpMethod.POST, "/api/auth").permitAll()
-            .antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
-
-//            .antMatchers(HttpMethod.GET, "/**/").permitAll()
+            .antMatchers(AUTH_WHITELIST).permitAll()
 
             .anyRequest()
             .authenticated()
-//                .permitAll()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class )
+            .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
         ;
     }
 
     @Bean
-    public FilterRegistrationBean<CorsFilter> corsFilter(){
+    public FilterRegistrationBean<CorsFilter> corsFilter() {
 
         List<String> all = Arrays.asList("*");
 
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedMethods(all);
-        config.setAllowedOrigins(all);
+//        config.setAllowedOrigins(all);
+        config.setAllowedOriginPatterns(Collections.singletonList("*"));
         config.setAllowedHeaders(all);
         config.setAllowCredentials(true);
 

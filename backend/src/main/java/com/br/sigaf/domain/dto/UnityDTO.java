@@ -13,7 +13,7 @@ public class UnityDTO {
 
     private Long id;
     private String name;
-    private String city;
     private String state;
+    private String city;
     private Integer postalCode;
 }
