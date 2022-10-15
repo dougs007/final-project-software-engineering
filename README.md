@@ -1,6 +1,6 @@
-# final-project-software-engineering
+# Final Project - PostGraduation on Software Engineering
 
-A project using Spring Boot with ReactJs with TypeScript.
+A project using Spring Boot with ReactJs.
 
 
 # @todo
