@@ -1,6 +1,7 @@
 # Backend
 
-This project was builted in Java using Spring Boot. Click [here](http://apisigaf-env-1.eba-rgmb2std.us-east-1.elasticbeanstalk.com/) to see the production environment.
+This project was builted in Java using Spring Boot.
+Click [here](http://apisigaf-env-1.eba-rgmb2std.us-east-1.elasticbeanstalk.com/) to see the production environment.
 
 
 ## Technologies
@@ -8,6 +9,13 @@ This project was builted in Java using Spring Boot. Click [here](http://apisigaf
 * [Spring Boot](https://spring.io/) 
 * [JUnit 5](https://junit.org/junit5/) 
 * [Swagger - Open API](https://swagger.io/) 
+* [MySql]()
+
+
+## Pre requirements to run Local
+
+- Firstly you need to setup the environment keys to connect with your local database (check the application.properties config).
+
 
 ## Execute the API
 
