@@ -39,5 +39,5 @@ To see the Swagger, check this link here.
 - [X] Plans endpoints.
 - [X] Puted v1 on AWS.
 - [ ] Fix documentation about the local environment.
-
+- [ ] Alerts endpoints.
 
