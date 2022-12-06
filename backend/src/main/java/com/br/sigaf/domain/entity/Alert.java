@@ -5,11 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -25,6 +23,11 @@ public class Alert {
     private String description;
     private LocalDate showDate;
     private Boolean readingConfirmation;
+    @Column(insertable = false, updatable = false, name = "userId")
+    private Integer userId;
 
-//    private List<User> students;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User student;
+
 }
