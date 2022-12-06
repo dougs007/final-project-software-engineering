@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     public User autenticar(String email, String senha) {
         Optional<User> usuario = repository.findByEmail(email);
 
-        if (!usuario.isPresent()) {
+        if (usuario.isEmpty()) {
             throw new AuthenticationError("Usuário não encontrado para o email informado.");
         }
 
