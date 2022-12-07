@@ -5,6 +5,7 @@ import com.br.sigaf.domain.exception.AuthenticationError;
 import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.repository.UserRepository;
 import com.br.sigaf.domain.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,18 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
     private final PasswordEncoder encoder;
-
-    public UserServiceImpl(
-            UserRepository repository,
-            PasswordEncoder encoder) {
-        super();
-        this.repository = repository;
-        this.encoder = encoder;
-    }
 
     @Override
     public User autenticar(String email, String senha) {

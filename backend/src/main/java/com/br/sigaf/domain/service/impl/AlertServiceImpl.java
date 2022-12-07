@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -19,17 +19,35 @@ public class AlertServiceImpl implements AlertService {
     @Override
     public List<AlertDTO> getAllByUserId(Integer userId) {
         List<Alert> alerts = repository.findAllByUserId(userId);
-//        return alerts.forEach(al -> );
-        return null;
+
+        return alerts.stream()
+                .map(AlertDTO::parse).collect(Collectors.toList());
     }
 
     @Override
-    public AlertDTO save(AlertDTO userDTO) {
-        return null;
+    public AlertDTO create(AlertDTO dto) {
+        Alert entity = Alert.builder()
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .showDate(dto.getShowDate())
+                .readingConfirmation(dto.getReadingConfirmation())
+                .userId(dto.getUserId())
+                .build();
+
+        entity = repository.save(entity);
+
+        return AlertDTO.parse(entity);
     }
 
     @Override
-    public Optional<AlertDTO> getById(Long id) {
-        return Optional.empty();
+    public AlertDTO markAlertAsRead(Long alertId) {
+        Alert entity = repository.findById(alertId).orElseThrow(
+                () -> new RuntimeException("Alert Id not found " + alertId)
+        );
+
+        entity.setReadingConfirmation(true);
+
+        entity = repository.save(entity);
+        return AlertDTO.parse(entity);
     }
 }

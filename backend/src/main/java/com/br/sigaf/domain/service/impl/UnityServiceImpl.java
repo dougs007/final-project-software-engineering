@@ -9,6 +9,7 @@ import com.br.sigaf.domain.repository.UnityRepository;
 import com.br.sigaf.domain.repository.UserRepository;
 import com.br.sigaf.domain.service.UnityService;
 import com.br.sigaf.domain.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +17,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UnityServiceImpl implements UnityService {
 
     private final UnityRepository repository;
-
-    public UnityServiceImpl(UnityRepository repository) {
-        super();
-        this.repository = repository;
-    }
-
 
     @Override
     public List<Unity> getAll() {

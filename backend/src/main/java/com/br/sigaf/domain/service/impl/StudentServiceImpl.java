@@ -9,22 +9,18 @@ import com.br.sigaf.domain.repository.UserRepository;
 import com.br.sigaf.domain.service.CoachService;
 import com.br.sigaf.domain.service.StudentService;
 import com.br.sigaf.domain.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class StudentServiceImpl implements StudentService {
 
     private final UserRepository repository;
     private final UserService userService;
-
-    public StudentServiceImpl(UserRepository repository, UserService userService) {
-        super();
-        this.repository = repository;
-        this.userService = userService;
-    }
 
     @Override
     public List<User> getAll() {
