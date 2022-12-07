@@ -11,5 +11,5 @@ import java.util.List;
 public interface AlertRepository extends JpaRepository<Alert, Long> {
 
     @Query("from Alert a WHERE a.readingConfirmation = false and a.userId = :userId")
-    List<Alert> findAllByUserId(Integer userId);
+    List<Alert> findAllByUserId(Long userId);
 }

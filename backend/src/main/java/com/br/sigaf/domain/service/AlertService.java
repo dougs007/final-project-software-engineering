@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface AlertService {
 
-    List<AlertDTO> getAllByUserId(Integer userId);
+    List<AlertDTO> getAllByUserId(Long userId);
     AlertDTO create(AlertDTO userDTO);
 
     AlertDTO markAlertAsRead(Long alertId);

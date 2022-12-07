@@ -19,15 +19,18 @@ public class Alert implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private LocalDate showDate;
     private Boolean readingConfirmation;
-    @Column(insertable = false, updatable = false, name = "userId")
-    private Integer userId;
+    @Column(name = "user_id")
+    private Long userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User student;
 
 }

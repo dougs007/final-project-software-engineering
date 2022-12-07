@@ -17,7 +17,7 @@ public class AlertDTO implements Serializable {
     private String description;
     private LocalDate showDate;
     private Boolean readingConfirmation;
-    private Integer userId;
+    private Long userId;
 
     public static AlertDTO parse(Alert entity) {
         return AlertDTO.builder()

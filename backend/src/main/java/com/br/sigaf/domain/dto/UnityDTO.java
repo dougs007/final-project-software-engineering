@@ -15,5 +15,5 @@ public class UnityDTO {
     private String name;
     private String state;
     private String city;
-    private Integer postalCode;
+    private Long postalCode;
 }

@@ -2,6 +2,7 @@ package com.br.sigaf.domain.service.impl;
 
 import com.br.sigaf.domain.dto.AlertDTO;
 import com.br.sigaf.domain.entity.Alert;
+import com.br.sigaf.domain.exception.ResourceNotFoundException;
 import com.br.sigaf.domain.repository.AlertRepository;
 import com.br.sigaf.domain.service.AlertService;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class AlertServiceImpl implements AlertService {
     private final AlertRepository repository;
 
     @Override
-    public List<AlertDTO> getAllByUserId(Integer userId) {
+    public List<AlertDTO> getAllByUserId(Long userId) {
         List<Alert> alerts = repository.findAllByUserId(userId);
 
         return alerts.stream()
@@ -42,7 +43,7 @@ public class AlertServiceImpl implements AlertService {
     @Override
     public AlertDTO markAlertAsRead(Long alertId) {
         Alert entity = repository.findById(alertId).orElseThrow(
-                () -> new RuntimeException("Alert Id not found " + alertId)
+                () -> new ResourceNotFoundException("Alert Id not found " + alertId)
         );
 
         entity.setReadingConfirmation(true);
