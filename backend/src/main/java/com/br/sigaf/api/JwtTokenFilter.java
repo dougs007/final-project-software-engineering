@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.br.sigaf.domain.service.JwtService;
 import com.br.sigaf.domain.service.impl.SecurityUserDetailsService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,18 +17,11 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.filter.OncePerRequestFilter;
 
 
+@AllArgsConstructor
 public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final SecurityUserDetailsService userDetailsService;
-
-    public JwtTokenFilter(
-            JwtService jwtService,
-            SecurityUserDetailsService userDetailsService
-    ) {
-        this.jwtService = jwtService;
-        this.userDetailsService = userDetailsService;
-    }
 
     @Override
     protected void doFilterInternal(

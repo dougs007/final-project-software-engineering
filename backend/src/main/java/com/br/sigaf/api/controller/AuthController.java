@@ -8,7 +8,7 @@ import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.service.AuthService;
 import com.br.sigaf.domain.service.JwtService;
 import com.br.sigaf.domain.service.UserService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AuthController {
 
     private final UserService service;

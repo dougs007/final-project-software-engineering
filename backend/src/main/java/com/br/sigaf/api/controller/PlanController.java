@@ -3,7 +3,7 @@ package com.br.sigaf.api.controller;
 import com.br.sigaf.domain.dto.PlanDTO;
 import com.br.sigaf.domain.entity.Plan;
 import com.br.sigaf.domain.service.PlanService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/plans")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class PlanController {
 
     private final PlanService service;

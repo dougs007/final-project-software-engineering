@@ -1,12 +1,9 @@
 package com.br.sigaf.api.controller;
 
-import com.br.sigaf.domain.dto.UnityDTO;
 import com.br.sigaf.domain.dto.UserDTO;
-import com.br.sigaf.domain.entity.Unity;
 import com.br.sigaf.domain.entity.User;
 import com.br.sigaf.domain.service.CoachService;
-import com.br.sigaf.domain.service.UnityService;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/coaches")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CoachController {
 
     private final CoachService service;
