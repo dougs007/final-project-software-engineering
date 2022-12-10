@@ -26,7 +26,7 @@ public class User {
     @Column(columnDefinition = "integer default " + 1)
     private Integer genderId;
     //    @Column(columnDefinition = "default " + RoleEnum.ROLE_STUDENT.getCode())
-    @Column(columnDefinition = "integer default " + 1)
+    @Column(columnDefinition = "integer default " + 3)
     private Integer roleId;
 
     @Column(nullable = false)

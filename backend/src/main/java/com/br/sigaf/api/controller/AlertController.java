@@ -17,8 +17,9 @@ public class AlertController {
     private final AlertService service;
 
     @GetMapping("/user/{userId}")
-    public List<AlertDTO> getAllByUserId(@PathVariable Long userId) {
-        return this.service.getAllByUserId(userId);
+    public ResponseEntity<List<AlertDTO>> getAllByUserId(@PathVariable Long userId) {
+        List<AlertDTO> alerts = this.service.getAllByUserId(userId);
+        return new ResponseEntity<>(alerts, HttpStatus.OK);
     }
 
     @PostMapping

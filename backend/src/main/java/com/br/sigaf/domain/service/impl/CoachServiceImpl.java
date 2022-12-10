@@ -8,22 +8,18 @@ import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.repository.UserRepository;
 import com.br.sigaf.domain.service.CoachService;
 import com.br.sigaf.domain.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CoachServiceImpl implements CoachService {
 
     private final UserRepository repository;
     private final UserService userService;
-
-    public CoachServiceImpl(UserRepository repository, UserService userService) {
-        super();
-        this.repository = repository;
-        this.userService = userService;
-    }
 
     @Override
     public List<User> getAll() {
@@ -31,7 +27,7 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
-    public User save(UserDTO userDTO) {
+    public User createCoach(UserDTO userDTO) {
         User user = User.builder()
                 .name(userDTO.getName())
                 .celphone(userDTO.getCelphone())
@@ -42,7 +38,7 @@ public class CoachServiceImpl implements CoachService {
                 .userId(null)
                 .build();
 
-        return this.userService.salvarUsuario(user);
+        return this.userService.createUser(user);
     }
 
     @Override

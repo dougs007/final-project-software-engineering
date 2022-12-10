@@ -24,8 +24,8 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody UserDTO dto) {
-        User student = service.save(dto);
+    public ResponseEntity<User> createStudent(@RequestBody UserDTO dto) {
+        User student = service.createStudent(dto);
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
 

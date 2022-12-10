@@ -27,8 +27,8 @@ public class CoachController {
     }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody UserDTO dto) {
-        User coach = service.save(dto);
+    public ResponseEntity<User> createCoach(@RequestBody UserDTO dto) {
+        User coach = service.createCoach(dto);
         return new ResponseEntity<>(coach, HttpStatus.CREATED);
     }
 

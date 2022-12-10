@@ -1,6 +1,6 @@
 package com.br.sigaf.domain.service;
 
-
+import com.br.sigaf.domain.dto.UserDTO;
 import com.br.sigaf.domain.entity.User;
 
 import java.util.List;
@@ -8,13 +8,10 @@ import java.util.Optional;
 
 public interface UserService {
 
-    User autenticar(String email, String senha);
+    User createUser(User usuario);
 
-    User salvarUsuario(User usuario);
+    Optional<User> getById(Long id);
 
-    void validarEmail(String email);
+    List<UserDTO> getAll();
 
-    Optional<User> obterPorId(Long id);
-
-    List<User> getAll();
 }

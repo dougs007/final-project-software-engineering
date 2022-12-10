@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface StudentService {
 
     List<User> getAll();
-    User save(UserDTO userDTO);
+    User createStudent(UserDTO userDTO);
     Optional<User> getById(Long id);
     User update(UserDTO dto, Long id);
     void delete(Long id);

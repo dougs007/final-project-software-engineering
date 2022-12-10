@@ -28,7 +28,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public User save(UserDTO userDTO) {
+    public User createStudent(UserDTO userDTO) {
         User user = User.builder()
                 .name(userDTO.getName())
                 .celphone(userDTO.getCelphone())
@@ -39,7 +39,7 @@ public class StudentServiceImpl implements StudentService {
                 .userId(userDTO.getUserId())
                 .build();
 
-        return this.userService.salvarUsuario(user);
+        return this.userService.createUser(user);
     }
 
     @Override
