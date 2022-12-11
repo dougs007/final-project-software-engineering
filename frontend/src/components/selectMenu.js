@@ -1,14 +1,15 @@
 import React from 'react';
 
 export default (props) => {
+    console.warn(props, 'propes');
 
     const options = props.lista.map( (option, index)  => {
         return (
             <option
                 key={index}
-                value={option.value}
+                value={option.id}
             >
-                {option.label}
+                {option.name}
             </option>
         )
     })

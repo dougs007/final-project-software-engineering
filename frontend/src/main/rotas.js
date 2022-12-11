@@ -5,11 +5,14 @@ import Home from '../pages/home';
 
 import Unitys from '../pages/unitys/lista-unitys';
 import Plans from '../pages/plans/list-plans';
+import Coaches from '../pages/coaches/list-coaches';
 
 import CadastroUnidades from '../pages/unitys/cadastro-unity';
 import CadastroPlans from '../pages/plans/cadastro-plans';
+import CreateCoaches from '../pages/coaches/create-coaches';
 import LandingPage from '../pages/landingPage';
 import { AuthConsumer } from '../main/provedorAutenticacao';
+
 
 import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 
@@ -67,17 +70,19 @@ function Rotas(props) {
                     component={CadastroUnidades}
                 />
 
-                {/*
+                
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/coaches"
                     component={Coaches}
                 />
+
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/coach/:id?"
-                    component={CadastroCoach}
+                    component={CreateCoaches}
                 />
+                {/*
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/students"
