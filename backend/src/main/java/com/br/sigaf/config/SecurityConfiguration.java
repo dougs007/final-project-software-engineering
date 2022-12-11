@@ -1,11 +1,9 @@
 package com.br.sigaf.config;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
@@ -85,7 +83,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Bean
     public FilterRegistrationBean<CorsFilter> corsFilter() {
 
-        List<String> all = Arrays.asList("*");
+        List<String> all = List.of("*");
 
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedMethods(all);

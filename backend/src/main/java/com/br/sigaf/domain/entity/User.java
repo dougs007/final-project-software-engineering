@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -36,4 +37,9 @@ public class User {
     private String password;
 
     private Integer userId;
+
+    private Integer unityId;
+
+    @OneToMany(mappedBy="student")
+    private Set<Alert> alerts;
 }
