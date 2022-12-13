@@ -15,8 +15,8 @@ public enum GenderEnum {
     OTHERS(3, "Others", "Outros");
 
     private final Integer code;
-    private final String  nameEn;
-    private final String  namePt;
+    private final String nameEn;
+    private final String namePt;
 
     @JsonValue
     public Integer getCode() {
@@ -26,7 +26,7 @@ public enum GenderEnum {
     @JsonCreator
     public static GenderEnum toEnum(Integer code) {
         if (code == null) {
-            return null;
+            return GenderEnum.OTHERS;
         }
 
         for (GenderEnum serie : GenderEnum.values()) {

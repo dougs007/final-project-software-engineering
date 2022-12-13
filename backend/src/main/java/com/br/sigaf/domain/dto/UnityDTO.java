@@ -1,12 +1,12 @@
 package com.br.sigaf.domain.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.br.sigaf.domain.entity.Unity;
+import lombok.*;
 
 @Getter
 @Setter
+@Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UnityDTO {
@@ -16,4 +16,14 @@ public class UnityDTO {
     private String state;
     private String city;
     private Long postalCode;
+
+    public static UnityDTO parse(Unity unity) {
+        if (null == unity) {
+            return null;
+        }
+        return UnityDTO.builder()
+                .id(unity.getId())
+                .name(unity.getName())
+                .build();
+    }
 }

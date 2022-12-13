@@ -9,9 +9,10 @@ import java.util.Optional;
 
 public interface CoachService {
 
-    List<User> getAll();
+    List<UserDTO> getAll();
     User createCoach(UserDTO userDTO);
     Optional<User> getById(Long id);
+    UserDTO getCoachById(Long id);
     User update(UserDTO dto, Long id);
     void delete(Long id);
 }

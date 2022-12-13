@@ -1,18 +1,22 @@
 package com.br.sigaf.domain.service.impl;
 
+import com.br.sigaf.domain.dto.UnityDTO;
 import com.br.sigaf.domain.dto.UserDTO;
 import com.br.sigaf.domain.entity.User;
 import com.br.sigaf.domain.enumerates.GenderEnum;
 import com.br.sigaf.domain.enumerates.RoleEnum;
 import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.repository.UserRepository;
+import com.br.sigaf.domain.service.AuthService;
 import com.br.sigaf.domain.service.CoachService;
+import com.br.sigaf.domain.service.UnityService;
 import com.br.sigaf.domain.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -20,10 +24,36 @@ public class CoachServiceImpl implements CoachService {
 
     private final UserRepository repository;
     private final UserService userService;
+    private final UnityService unityService;
+    private final AuthService authService;
 
     @Override
-    public List<User> getAll() {
-        return this.repository.getCoaches();
+    public List<UserDTO> getAll() {
+        List<User> coaches = this.repository.getCoaches();
+//        List<UserDTO> coachesDTO = new ArrayList<>();
+        List<UserDTO> coachesDTO =
+        coaches.stream().map(coach -> {
+            UnityDTO unityDto = null != coach.getUnityId()
+                    ? UnityDTO.parse(unityService.getById(coach.getUnityId()).get())
+                    : null;
+
+//            UserDTO coachDto =
+            return UserDTO.builder()
+                    .id(coach.getId())
+                    .name(coach.getName())
+                    .celphone(coach.getCelphone())
+                    .gender(GenderEnum.toEnum(coach.getGenderId()).getNamePt())
+                    .genderId(coach.getGenderId())
+                    .unity(unityDto)
+                    .roleId(RoleEnum.ROLE_COACH.getCode())
+                    .email(coach.getEmail())
+                    .build();
+
+//            coachesDTO.add(coachDto);
+//            return null;
+        }).collect(Collectors.toList());
+
+        return coachesDTO;
     }
 
     @Override
@@ -33,6 +63,7 @@ public class CoachServiceImpl implements CoachService {
                 .celphone(userDTO.getCelphone())
                 .genderId(null != userDTO.getGenderId() ? userDTO.getGenderId() : GenderEnum.OTHERS.getCode())
                 .roleId(RoleEnum.ROLE_COACH.getCode())
+                .unityId(userDTO.getUnityId())
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
                 .userId(null)
@@ -49,17 +80,42 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
+    public UserDTO getCoachById(Long id) {
+        User user = this.getById(id).get();
+
+        UnityDTO unityDto = null != user.getUnityId()
+                ? UnityDTO.parse(unityService.getById(user.getUnityId()).get())
+                : null;
+
+        return UserDTO.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .celphone(user.getCelphone())
+                .gender(GenderEnum.toEnum(user.getGenderId()).getNamePt())
+                .genderId(user.getGenderId())
+                .unity(unityDto)
+                .roleId(RoleEnum.ROLE_COACH.getCode())
+                .email(user.getEmail())
+                .build();
+    }
+
+    @Override
     public User update(UserDTO userDTO, Long id) {
         User user = this.getById(id).get();
+
+        String passwordUpdated = null != userDTO.getPassword()
+                ? authService.hashPassword(userDTO.getPassword())
+                : user.getPassword();
 
         User userUpdate = User.builder()
                 .id(id)
                 .name(userDTO.getName())
                 .celphone(userDTO.getCelphone())
                 .genderId(null != userDTO.getGenderId() ? userDTO.getGenderId() : GenderEnum.OTHERS.getCode())
+                .unityId(null != userDTO.getUnityId() ? userDTO.getUnityId() : null)
                 .roleId(RoleEnum.ROLE_COACH.getCode())
                 .email(userDTO.getEmail())
-                .password(user.getPassword())
+                .password(passwordUpdated)
                 .userId(null)
                 .build();
         return this.repository.saveAndFlush(userUpdate);

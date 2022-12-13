@@ -50,4 +50,8 @@ public class AuthServiceImpl implements AuthService {
         String senhaCripto = encoder.encode(senha);
         usuario.setPassword(senhaCripto);
     }
+
+    public String hashPassword(String password) {
+        return encoder.encode(password);
+    }
 }

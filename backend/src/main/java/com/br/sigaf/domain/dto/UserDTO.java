@@ -2,6 +2,8 @@ package com.br.sigaf.domain.dto;
 
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
@@ -15,6 +17,10 @@ public class UserDTO {
     private String  email;
     private String  password;
     private Integer genderId;
+    private String gender;
     private Integer roleId;
+    private Long unityId;
+    private UnityDTO unity;
     private Integer userId;
+    private Set<AlertDTO> alerts;
 }

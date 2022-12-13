@@ -19,7 +19,7 @@ public class CoachController {
     private final CoachService service;
 
     @GetMapping
-    public List<User> getAll() {
+    public List<UserDTO> getAll() {
         return this.service.getAll();
     }
 
@@ -30,9 +30,9 @@ public class CoachController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable Long id) {
-        Optional<User> coach = service.getById(id);
-        return new ResponseEntity<>(coach.get(), HttpStatus.OK);
+    public ResponseEntity<UserDTO> getById(@PathVariable Long id) {
+        UserDTO coach = service.getCoachById(id);
+        return new ResponseEntity<>(coach, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")

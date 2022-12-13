@@ -9,4 +9,5 @@ public interface AuthService {
     void validarEmail(String email);
 
     void criptografarSenha(User usuario);
+    String hashPassword(String password);
 }
