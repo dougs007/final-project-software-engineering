@@ -1,10 +1,13 @@
 package com.br.sigaf.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,6 +16,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class User {
 
     @Id
@@ -35,10 +41,11 @@ public class User {
     //    @Column(columnDefinition = "default " + RoleEnum.ROLE_STUDENT.getCode())
     @Column(columnDefinition = "integer default " + 3)
     private Integer roleId;
-    private Integer userId;
+    private Long userId;
 
     private Long unityId;
 
+    @JsonManagedReference
     @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
-    private Set<Alert> alerts;
+    private List<Alert> alerts;
 }

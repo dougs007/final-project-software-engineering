@@ -21,6 +21,11 @@ public class UserDTO {
     private Integer roleId;
     private Long unityId;
     private UnityDTO unity;
-    private Integer userId;
+    private Long userId;
+    private UserDTO coach;
     private Set<AlertDTO> alerts;
+
+    public UserDTO(String name) {
+        this.name = name;
+    }
 }

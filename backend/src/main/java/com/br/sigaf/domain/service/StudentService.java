@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface StudentService {
 
-    List<User> getAll();
+    List<UserDTO> getAll();
     User createStudent(UserDTO userDTO);
     Optional<User> getById(Long id);
     User update(UserDTO dto, Long id);

@@ -30,14 +30,11 @@ public class CoachServiceImpl implements CoachService {
     @Override
     public List<UserDTO> getAll() {
         List<User> coaches = this.repository.getCoaches();
-//        List<UserDTO> coachesDTO = new ArrayList<>();
-        List<UserDTO> coachesDTO =
-        coaches.stream().map(coach -> {
+        return coaches.stream().map(coach -> {
             UnityDTO unityDto = null != coach.getUnityId()
                     ? UnityDTO.parse(unityService.getById(coach.getUnityId()).get())
                     : null;
 
-//            UserDTO coachDto =
             return UserDTO.builder()
                     .id(coach.getId())
                     .name(coach.getName())
@@ -48,12 +45,7 @@ public class CoachServiceImpl implements CoachService {
                     .roleId(RoleEnum.ROLE_COACH.getCode())
                     .email(coach.getEmail())
                     .build();
-
-//            coachesDTO.add(coachDto);
-//            return null;
         }).collect(Collectors.toList());
-
-        return coachesDTO;
     }
 
     @Override
