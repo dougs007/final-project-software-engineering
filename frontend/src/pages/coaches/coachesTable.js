@@ -1,5 +1,4 @@
 import React from 'react';
-import currencyFormatter from 'currency-formatter';
 
 export default props => {
 
@@ -8,8 +7,8 @@ export default props => {
             <tr key={coach.id}>
                 <td>{coach.id}</td>
                 <td>{coach.name}</td>
-                <td>{ currencyFormatter.format(coach.value, { locale: 'pt-BR'}) }</td>
-                <td>{coach.qtdDaysValidity}</td>
+                <td>{!coach.unity ? " - " : coach.unity.name}</td>
+                <td>{coach.gender}</td>
                 <td>
                     <button
                         type="button"
@@ -38,8 +37,8 @@ export default props => {
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Dias</th>
+                    <th scope="col">Unidade</th>
+                    <th scope="col">Sexo</th>
                     <th scope="col">Ações</th>
                 </tr>
             </thead>

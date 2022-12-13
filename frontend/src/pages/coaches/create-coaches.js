@@ -15,9 +15,10 @@ class CreateCoaches extends React.Component {
     state = {
         id: null,
         name: '',
-        description: '',
-        value: 0.0,
-        qtdDaysValidity: 0,
+        genderId: 1,
+        unityId: 1,
+        email: null,
+        password: null,
         atualizando: false,
         units: []
     }
@@ -45,6 +46,7 @@ class CreateCoaches extends React.Component {
                 .obterPorId(params.id)
                 .then(response => {
                     this.setState( {...response.data, atualizando: true} )
+                    this.setState( {unityId: !response.data.unity ? 0 : response.data.unity.id} )
                 })
                 .catch(erros => {
                     messages.mensagemErro(erros.response.data)
@@ -53,8 +55,8 @@ class CreateCoaches extends React.Component {
     }
 
     submit = () => {
-        const { name, description, value, qtdDaysValidity} = this.state;
-        const coach = { name, description, value, qtdDaysValidity };
+        const { name, genderId, unityId, email, password } = this.state;
+        const coach = { name, genderId, unityId, email, password };
 
         try {
             this.service.validar(coach)
@@ -62,7 +64,7 @@ class CreateCoaches extends React.Component {
             const mensagens = erro.mensagens;
             mensagens.forEach(msg => messages.mensagemErro(msg));
             return false;
-        }     
+        }
 
         this.service
             .salvar(coach)
@@ -75,8 +77,8 @@ class CreateCoaches extends React.Component {
     }
 
     atualizar = () => {
-        const { id, name, description, value, qtdDaysValidity} = this.state;
-        const coach = { id, name, description, value, qtdDaysValidity };
+        const { id, name, genderId, unityId, email, password } = this.state;
+        const coach = { id, name, genderId, unityId, email, password };
 
         this.service
             .atualizar(coach)
@@ -95,8 +97,17 @@ class CreateCoaches extends React.Component {
         this.setState({ [name] : value })
     }
 
+    getAllGenders() {
+        return [
+            {id: 1, name: 'Masculino'},
+            {id: 2, name: 'Feminino'},
+            {id: 3, name: 'Outros'},
+        ];
+    }
+
     render() {
         const unidades = this.state.units;
+        const genders = this.getAllGenders();
 
         return (
             <Card
@@ -123,34 +134,17 @@ class CreateCoaches extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-12">
-                        <FormGroup
-                            id="inputDescription"
-                            label="Descrição: *"
-                        >
-                            <input
-                                id="inputDescription"
-                                type="text"
-                                className="form-control"
-                                name="description"
-                                value={this.state.description}
-                                onChange={this.handleChange}
-                            />
-                        </FormGroup>
-                    </div>
-                </div>
-                <div className="row">
                     <div className="col-md-6">
                         <FormGroup
-                            id="inputValue"
-                            label="Valor: *"
+                            id="inputGender"
+                            label="Sexo: *"
                         >
-                            <input
-                                id="inputValue" 
-                                type="text"
-                                name="value"
-                                value={this.state.value}
-                                onChange={this.handleChange} 
+                            <SelectMenu
+                                id="inputGender"
+                                value={this.state.genderId}
+                                onChange={this.handleChange}
+                                lista={genders}
+                                name="genderId"
                                 className="form-control"
                             />
                         </FormGroup>
@@ -163,10 +157,43 @@ class CreateCoaches extends React.Component {
                         >
                             <SelectMenu
                                 id="inputUnity" 
-                                value={this.state.unity_id}
+                                value={this.state.unityId}
                                 onChange={this.handleChange}
                                 lista={unidades}
-                                name="unity"
+                                name="unityId"
+                                className="form-control"
+                            />
+                        </FormGroup>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <FormGroup
+                            id="inputEmail"
+                            label="Email: *"
+                        >
+                            <input
+                                id="inputEmail" 
+                                type="email"
+                                name="email"
+                                value={this.state.email}
+                                onChange={this.handleChange} 
+                                className="form-control"
+                            />
+                        </FormGroup>
+                    </div>
+
+                    <div className="col-md-6">
+                        <FormGroup
+                            id="inputPassword"
+                            label="Senha: *"
+                        >
+                            <input
+                                id="inputPassword" 
+                                type="password"
+                                name="password"
+                                value={this.state.password}
+                                onChange={this.handleChange} 
                                 className="form-control"
                             />
                         </FormGroup>

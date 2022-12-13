@@ -43,4 +43,12 @@ export default class AuthService {
 
         return usuario;
     }
+
+    static getUserInfo() {
+        if (AuthService.isUsuarioAutenticado) {
+            const usuario = AuthService.obterUsuarioAutenticado()
+            return usuario;
+        }
+        return false;
+    }
 }

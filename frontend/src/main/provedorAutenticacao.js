@@ -21,7 +21,8 @@ class ProvedorAutenticacao extends React.Component {
         const claims = jwt.decode(token)
         const usuario = {
             id: claims.userid,
-            nome: claims.nome
+            nome: claims.nome,
+            roleid: claims.roleid,
         }
         
         AuthService.logar(usuario, token);

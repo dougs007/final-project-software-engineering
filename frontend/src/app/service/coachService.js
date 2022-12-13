@@ -12,23 +12,29 @@ export default class CoachService extends ApiService {
         return this.get(`/${id}`);
     }
 
-    validar(unity) {
+    validar(coach) {
         const erros = [];
 
-        if (!unity.name) {
+        if (!coach.name) {
             erros.push("Informe o Nome.")
         }
 
-        if (!unity.description) {
-            erros.push("Informe a Descrição.")
+        if (!coach.genderId) {
+            erros.push("Informe o Sexo.")
         }
 
-        if (!unity.value) {
-            erros.push("Informe o Valor.")
+        if (!coach.unityId) {
+            erros.push("Informe a Unidade.")
         }
 
-        if (!unity.qtdDaysValidity) {
-            erros.push("Informe a quantidade de dias válidos.")
+        if (!coach.email) {
+            erros.push("Informe o E-mail.")
+        } else if (coach.email.indexOf("@" > -1)) {
+            erros.push("Informe um E-mail válido.")
+        }
+
+        if (!coach.password && !coach.id) {
+            erros.push("Informe a Senha.")
         }
 
         if (erros && erros.length > 0) {
@@ -36,12 +42,12 @@ export default class CoachService extends ApiService {
         }
     }
 
-    salvar(unity) {
-        return this.post('/', unity);
+    salvar(coach) {
+        return this.post('/', coach);
     }
 
-    atualizar (unity) {
-        return this.put(`/${unity.id}`, unity);
+    atualizar (coach) {
+        return this.put(`/${coach.id}`, coach);
     }
 
     getAll() {
