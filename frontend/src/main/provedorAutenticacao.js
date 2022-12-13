@@ -12,6 +12,7 @@ class ProvedorAutenticacao extends React.Component {
 
     state = {
         usuarioAutenticado: null,
+        roleId: null,
         isAutenticado: false,
         isLoading: true
     }
@@ -22,16 +23,20 @@ class ProvedorAutenticacao extends React.Component {
         const usuario = {
             id: claims.userid,
             nome: claims.nome,
-            roleid: claims.roleid,
+            roleId: claims.roleid,
         }
         
         AuthService.logar(usuario, token);
-        this.setState({ isAutenticado: true, usuarioAutenticado: usuario })
+        this.setState({
+            isAutenticado: true,
+            usuarioAutenticado: usuario,
+            roleId: usuario.roleId,
+        })
     }
 
     encerrarSessao = () => {
         AuthService.removerUsuarioAutenticado();
-        this.setState({ isAutenticado: false, usuarioAutenticado: null})
+        this.setState({ isAutenticado: false, usuarioAutenticado: null, roleId: 0})
     }
 
     async componentDidMount() {
@@ -41,7 +46,8 @@ class ProvedorAutenticacao extends React.Component {
             this.setState({
                 isAutenticado: true,
                 usuarioAutenticado: usuario,
-                isLoading: false
+                isLoading: false,
+                roleId: usuario.roleid,
             })
         } else {
             this.setState( previousState => {
@@ -62,8 +68,9 @@ class ProvedorAutenticacao extends React.Component {
         const contexto = {
             usuarioAutenticado: this.state.usuarioAutenticado,
             isAutenticado: this.state.isAutenticado,
+            roleId: this.state.roleId,
             iniciarSessao: this.iniciarSessao,
-            encerrarSessao: this.encerrarSessao
+            encerrarSessao: this.encerrarSessao,
         }
 
         return(

@@ -24,12 +24,12 @@ function Navbar(props) {
                 label="Home"
               />
               <NavbarItem
-                render={props.isUsuarioAutenticado}
+                render={props.isUsuarioAutenticado && props.roleId !== 3}
                 href="/unitys"
                 label="Unidades"
               />
               <NavbarItem
-                render={props.isUsuarioAutenticado}
+                render={props.isUsuarioAutenticado && props.roleId !== 3}
                 href="/coaches"
                 label="Professores"
               />
@@ -39,7 +39,7 @@ function Navbar(props) {
                 label="Alunos"
               />
               <NavbarItem
-                render={props.isUsuarioAutenticado}
+                render={props.isUsuarioAutenticado && props.roleId !== 3}
                 href="/plans"
                 label="Planos"
               />
@@ -61,6 +61,7 @@ export default () => (
     {(context) => (
       <Navbar
         isUsuarioAutenticado={context.isAutenticado}
+        roleId={context.roleId}
         deslogar={context.encerrarSessao}
       />
     )}

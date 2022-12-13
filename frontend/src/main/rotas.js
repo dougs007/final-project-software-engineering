@@ -6,10 +6,12 @@ import Home from '../pages/home';
 import Unitys from '../pages/unitys/lista-unitys';
 import Plans from '../pages/plans/list-plans';
 import Coaches from '../pages/coaches/list-coaches';
+import Students from '../pages/students/list-students';
 
 import CadastroUnidades from '../pages/unitys/cadastro-unity';
 import CadastroPlans from '../pages/plans/cadastro-plans';
 import CreateCoaches from '../pages/coaches/create-coaches';
+import CreateStudents from '../pages/students/create-students';
 import LandingPage from '../pages/landingPage';
 import { AuthConsumer } from '../main/provedorAutenticacao';
 
@@ -35,6 +37,7 @@ function RotaAutenticada( { component: Component, isUsuarioAutenticado, ...props
 }
 
 function Rotas(props) {
+    console.warn(props, 'propx')
     return (
         <BrowserRouter>
             <Switch>
@@ -70,7 +73,7 @@ function Rotas(props) {
                     component={CadastroUnidades}
                 />
 
-                
+
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/coaches"
@@ -82,7 +85,7 @@ function Rotas(props) {
                     path="/coach/:id?"
                     component={CreateCoaches}
                 />
-                {/*
+
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/students"
@@ -91,9 +94,8 @@ function Rotas(props) {
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}
                     path="/student/:id?"
-                    component={CadastroStudent}
+                    component={CreateStudents}
                 />
-                */}
 
                 <RotaAutenticada
                     isUsuarioAutenticado={props.isUsuarioAutenticado}

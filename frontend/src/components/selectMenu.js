@@ -7,7 +7,7 @@ export default (props) => {
             <option
                 key={index}
                 value={option.id}
-                selected={!!option.select}
+                selected={!option.select}
             >
                 {option.name}
             </option>

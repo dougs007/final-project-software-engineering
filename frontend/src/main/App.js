@@ -20,7 +20,7 @@ class App extends React.Component {
     return(
       <ProvedorAutenticacao>
         <Navbar />
-        <div className="container">    
+        <div className="container">
           <Rotas />
         </div>
       </ProvedorAutenticacao>
