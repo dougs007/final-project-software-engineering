@@ -6,8 +6,6 @@ export default props => {
 
     const user = AuthService.getUserInfo();
 
-    console.warn(user, 'xxxx');
-
     const rows = props.students.map( student => {
         return (
             <tr key={student.id}>
@@ -22,10 +20,6 @@ export default props => {
                         title="Editar"
                         className="btn btn-primary"
                         onClick={e => props.editAction(student.id)}
-                        disabled={
-                            // user.roleId === 3 ||
-                            (user.roleId === 3 && user.id !== student.id)
-                        }
                     >
                         <i className="pi pi-pencil"></i>
                     </button>

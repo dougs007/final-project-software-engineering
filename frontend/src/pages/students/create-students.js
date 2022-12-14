@@ -48,6 +48,9 @@ class CreateStudents extends React.Component {
         this.serviceCoach
             .getAll()
             .then(response => {
+                if (response.data.length === 1) {
+                    this.setState( {userId: response.data[0].id} )
+                }
                 this.setState( {coaches: response.data} )
             })
             .catch(erros => {
