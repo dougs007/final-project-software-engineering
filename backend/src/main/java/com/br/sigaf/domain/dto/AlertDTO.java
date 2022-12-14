@@ -26,7 +26,7 @@ public class AlertDTO implements Serializable {
                 .description(entity.getDescription())
                 .showDate(entity.getShowDate())
                 .readingConfirmation(entity.getReadingConfirmation())
-                .userId(entity.getUserId())
+                .userId(entity.getUser().getId())
                 .build();
     }
 }

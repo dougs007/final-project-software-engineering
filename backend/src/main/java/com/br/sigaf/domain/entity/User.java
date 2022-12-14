@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -28,6 +29,9 @@ public class User {
     @Column(nullable = false)
     private String name;
     private String celphone;
+    private LocalDate hiringDate;
+    private Long codeCref;
+    private Long codeMatricula;
 
     @Column(nullable = false)
     private String email;
@@ -46,6 +50,22 @@ public class User {
     private Long unityId;
 
     @JsonManagedReference
-    @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Alert> alerts;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
+    private List<Evaluation> evaluations;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
+    private List<Appearance> appearances;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private List<Signature> signatures;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
+    private List<Exercise> exercises;
 }

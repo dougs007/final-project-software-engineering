@@ -18,6 +18,16 @@ public class UnityPlan {
     @EmbeddedId
     private UnityPlanId id;
 
+    @ManyToOne
+    @MapsId("unityId")
+    @JoinColumn(name = "unity_id")
+    private Unity unity;
+
+    @ManyToOne
+    @MapsId("planId")
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
+
     @Column(nullable = false)
     private LocalDate dateCreated;
 }

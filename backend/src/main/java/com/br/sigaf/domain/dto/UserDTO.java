@@ -2,6 +2,7 @@ package com.br.sigaf.domain.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Getter
@@ -14,6 +15,9 @@ public class UserDTO {
     private Long    id;
     private String  name;
     private String  celphone;
+    private LocalDate dataContratacao;
+    private Long codigoCref;
+    private Long codigoMatricula;
     private String  email;
     private String  password;
     private Integer genderId;

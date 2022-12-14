@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface AlertRepository extends JpaRepository<Alert, Long> {
 
-    @Query("from Alert a WHERE a.readingConfirmation = false and a.userId = :userId")
+    @Query("from Alert a WHERE a.readingConfirmation = false and a.user = :userId")
     List<Alert> findAllByUserId(Long userId);
 }

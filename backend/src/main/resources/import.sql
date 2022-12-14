@@ -6,7 +6,7 @@ INSERT INTO `unity` ( `name`, `city`, `state`, `postal_code`) values ('Águas Cl
 INSERT INTO `unity` ( `name`, `city`, `state`, `postal_code`) values ('Vicente Pires', 'Brasília', 'Distrito Federal', '72440812');
 
 -- inserts of plans
-INSERT INTO `plans` ( name, celphone,  email, password, role_id) values ('douglas', '61 991972551', 'dsfontes@gmail.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 1);
+-- INSERT INTO `plans` ( name, celphone,  email, password, role_id) values ('douglas', '61 991972551', 'dsfontes@gmail.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 1);
 
 -- inserts of admin's
 INSERT INTO `user` ( name, celphone,  email, password, role_id) values ('admin', '61 991972551', 'admin@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 1);
@@ -14,10 +14,10 @@ INSERT INTO `user` ( name, celphone,  email, password, role_id) values ('douglas
 INSERT INTO `user` ( name, celphone,  email, password, role_id) values ('admin ceilandia', '61 991972551', 'cei@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 1);
 
 -- inserts of coach
-INSERT INTO `user` ( name, celphone,  email, password, user_id, role_id, unity_id) values ('Coach ceilandia', '61 991972551', 'p1@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 3, 2, 1);
+INSERT INTO `user` ( name, celphone,  email, password, user_id, role_id, unity_id, code_cref, hiring_date) values ('Coach ceilandia', '61 991972551', 'p1@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 3, 2, 1, 123456, now());
 
 -- inserts of student
-INSERT INTO `user` ( name, celphone,  email, password, user_id, role_id, unity_id) values ('Student ceilandia', '61 991972551', 'a1@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 4, 3, 1);
+INSERT INTO `user` ( name, celphone,  email, password, user_id, role_id, unity_id, code_matricula) values ('Student ceilandia', '61 991972551', 'a1@admin.com', '$2a$10$o5vhWUGZJ5rFKCVPGtD6hObB057TXLvqYny6Kss2FJTPfMg7HZy1a', 4, 3, 1, 55328);
 
 
 -- Inserts of alerts

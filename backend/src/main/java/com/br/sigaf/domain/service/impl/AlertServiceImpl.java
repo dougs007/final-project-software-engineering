@@ -32,7 +32,8 @@ public class AlertServiceImpl implements AlertService {
                 .description(dto.getDescription())
                 .showDate(dto.getShowDate())
                 .readingConfirmation(dto.getReadingConfirmation())
-                .userId(dto.getUserId())
+//                .userId(dto.getUserId())
+                // @todo resolver esse bug
                 .build();
 
         entity = repository.save(entity);

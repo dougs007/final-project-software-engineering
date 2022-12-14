@@ -32,12 +32,12 @@ public class Alert implements Serializable {
     @Column(nullable = false)
     private LocalDate showDate;
     private Boolean readingConfirmation;
-    @Column(name = "user_id")
-    private Long userId;
+//    @Column(name = "user_id", insertable = false, updatable = false)
+//    private Long userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
-    private User student;
+    private User user;
 
 }

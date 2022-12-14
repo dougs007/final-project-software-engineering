@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class UnityPlanId implements Serializable {
 
     @Column(nullable = false)
-    private Integer unityId;
+    private Long unityId;
     @Column(nullable = false)
-    private Integer planId;
+    private Long planId;
 }
