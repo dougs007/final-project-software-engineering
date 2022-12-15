@@ -8,6 +8,7 @@ import com.br.sigaf.domain.service.AlertService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +26,7 @@ public class AlertServiceImpl implements AlertService {
                 .map(AlertDTO::parse).collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public AlertDTO create(AlertDTO dto) {
         Alert entity = Alert.builder()
@@ -41,6 +43,7 @@ public class AlertServiceImpl implements AlertService {
         return AlertDTO.parse(entity);
     }
 
+    @Transactional
     @Override
     public AlertDTO markAlertAsRead(Long alertId) {
         Alert entity = repository.findById(alertId).orElseThrow(

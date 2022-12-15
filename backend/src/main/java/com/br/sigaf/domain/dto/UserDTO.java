@@ -16,8 +16,8 @@ public class UserDTO {
     private String  name;
     private String  celphone;
     private LocalDate dataContratacao;
-    private Long codigoCref;
-    private Long codigoMatricula;
+    private Long codeCref;
+    private Long codeMatricula;
     private String  email;
     private String  password;
     private Integer genderId;

@@ -13,6 +13,7 @@ import com.br.sigaf.domain.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -43,6 +44,7 @@ public class StudentServiceImpl implements StudentService {
                     .genderId(student.getGenderId())
                     .unity(unityDto)
                     .roleId(RoleEnum.ROLE_STUDENT.getCode())
+                    .codeMatricula(student.getCodeMatricula())
                     .coach(studentDto)
                     .email(student.getEmail())
                     .build();
@@ -57,6 +59,7 @@ public class StudentServiceImpl implements StudentService {
                 .genderId(null != userDTO.getGenderId() ? userDTO.getGenderId() : GenderEnum.OTHERS.getCode())
                 .roleId(RoleEnum.ROLE_STUDENT.getCode())
                 .email(userDTO.getEmail())
+                .codeMatricula(userDTO.getCodeMatricula())
                 .password(userDTO.getPassword())
                 .userId(userDTO.getUserId())
                 .unityId(userDTO.getUnityId())
@@ -82,6 +85,7 @@ public class StudentServiceImpl implements StudentService {
                 .celphone(userDTO.getCelphone())
                 .genderId(null != userDTO.getGenderId() ? userDTO.getGenderId() : GenderEnum.OTHERS.getCode())
                 .roleId(RoleEnum.ROLE_STUDENT.getCode())
+                .codeMatricula(userDTO.getCodeMatricula())
                 .email(userDTO.getEmail())
                 .password(user.getPassword())
                 .userId(null != userDTO.getUserId() ? userDTO.getUserId() :  user.getUserId())
@@ -90,6 +94,7 @@ public class StudentServiceImpl implements StudentService {
         return this.repository.saveAndFlush(userUpdate);
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
         this.repository.deleteById(id);

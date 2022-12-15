@@ -14,6 +14,7 @@ import com.br.sigaf.domain.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,6 +42,7 @@ public class CoachServiceImpl implements CoachService {
                     .celphone(coach.getCelphone())
                     .gender(GenderEnum.toEnum(coach.getGenderId()).getNamePt())
                     .genderId(coach.getGenderId())
+                    .codeCref(coach.getCodeCref())
                     .unity(unityDto)
                     .roleId(RoleEnum.ROLE_COACH.getCode())
                     .email(coach.getEmail())
@@ -56,6 +58,7 @@ public class CoachServiceImpl implements CoachService {
                 .genderId(null != userDTO.getGenderId() ? userDTO.getGenderId() : GenderEnum.OTHERS.getCode())
                 .roleId(RoleEnum.ROLE_COACH.getCode())
                 .unityId(userDTO.getUnityId())
+                .codeCref(userDTO.getCodeCref())
                 .email(userDTO.getEmail())
                 .password(userDTO.getPassword())
                 .userId(null)
@@ -85,6 +88,7 @@ public class CoachServiceImpl implements CoachService {
                 .celphone(user.getCelphone())
                 .gender(GenderEnum.toEnum(user.getGenderId()).getNamePt())
                 .genderId(user.getGenderId())
+                .codeCref(user.getCodeCref())
                 .unity(unityDto)
                 .roleId(RoleEnum.ROLE_COACH.getCode())
                 .email(user.getEmail())
@@ -107,12 +111,14 @@ public class CoachServiceImpl implements CoachService {
                 .unityId(null != userDTO.getUnityId() ? userDTO.getUnityId() : null)
                 .roleId(RoleEnum.ROLE_COACH.getCode())
                 .email(userDTO.getEmail())
+                .codeCref(userDTO.getCodeCref())
                 .password(passwordUpdated)
                 .userId(null)
                 .build();
         return this.repository.saveAndFlush(userUpdate);
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
         this.repository.deleteById(id);

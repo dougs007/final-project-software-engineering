@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,8 +59,14 @@ public class UnityServiceImpl implements UnityService {
         return this.repository.saveAndFlush(unity);
     }
 
+
+    @Transactional
     @Override
     public void delete(Long id) {
-        this.repository.deleteById(id);
+        try {
+            this.repository.deleteById(id);
+        } catch (Exception e) {
+            throw new RegraNegocioException("Não foi possível remover a unidade");
+        }
     }
 }
