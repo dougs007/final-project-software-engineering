@@ -37,7 +37,6 @@ function RotaAutenticada( { component: Component, isUsuarioAutenticado, ...props
 }
 
 function Rotas(props) {
-    console.warn(props, 'propx')
     return (
         <BrowserRouter>
             <Switch>

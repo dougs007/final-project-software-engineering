@@ -11,6 +11,7 @@ export default props => {
             <tr key={student.id}>
                 <td>{student.id}</td>
                 <td>{student.name}</td>
+                <td>{student.codeMatricula}</td>
                 <td>{!student.coach ? " - " : student.coach.name}</td>
                 <td>{!student.unity ? " - " : student.unity.name}</td>
                 <td>{student.gender}</td>
@@ -43,6 +44,7 @@ export default props => {
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Matrícula</th>
                     <th scope="col">Professor</th>
                     <th scope="col">Unidade</th>
                     <th scope="col">Sexo</th>

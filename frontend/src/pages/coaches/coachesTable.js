@@ -7,6 +7,7 @@ export default props => {
             <tr key={coach.id}>
                 <td>{coach.id}</td>
                 <td>{coach.name}</td>
+                <td>{coach.codeCref}</td>
                 <td>{!coach.unity ? " - " : coach.unity.name}</td>
                 <td>{coach.gender}</td>
                 <td>
@@ -37,6 +38,7 @@ export default props => {
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Cref</th>
                     <th scope="col">Unidade</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">Ações</th>

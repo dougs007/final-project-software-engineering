@@ -15,6 +15,7 @@ class CreateCoaches extends React.Component {
     state = {
         id: null,
         name: '',
+        codeCref: null,
         genderId: 1,
         unityId: 1,
         email: null,
@@ -55,8 +56,8 @@ class CreateCoaches extends React.Component {
     }
 
     submit = () => {
-        const { name, genderId, unityId, email, password } = this.state;
-        const coach = { name, genderId, unityId, email, password };
+        const { name, genderId, unityId, codeCref, email, password } = this.state;
+        const coach = { name, genderId, codeCref, unityId, email, password };
 
         try {
             this.service.validar(coach)
@@ -77,8 +78,8 @@ class CreateCoaches extends React.Component {
     }
 
     atualizar = () => {
-        const { id, name, genderId, unityId, email, password } = this.state;
-        const coach = { id, name, genderId, unityId, email, password };
+        const { id, name, genderId, codeCref, unityId, email, password } = this.state;
+        const coach = { id, name, genderId, codeCref, unityId, email, password };
 
         this.service
             .atualizar(coach)
@@ -117,7 +118,7 @@ class CreateCoaches extends React.Component {
                 }
             >
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-6">
                         <FormGroup
                             id="inputName"
                             label="Nome: *"
@@ -128,6 +129,21 @@ class CreateCoaches extends React.Component {
                                 className="form-control"
                                 name="name"
                                 value={this.state.name}
+                                onChange={this.handleChange}
+                            />
+                        </FormGroup>
+                    </div>
+                    <div className="col-md-6">
+                        <FormGroup
+                            id="inputCref"
+                            label="CREF: *"
+                        >
+                            <input
+                                id="inputCref"
+                                type="text"
+                                className="form-control"
+                                name="codeCref"
+                                value={this.state.codeCref}
                                 onChange={this.handleChange}
                             />
                         </FormGroup>

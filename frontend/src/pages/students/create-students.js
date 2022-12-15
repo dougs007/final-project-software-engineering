@@ -16,6 +16,7 @@ class CreateStudents extends React.Component {
     state = {
         id: null,
         name: '',
+        codeMatricula: null,
         genderId: 1,
         unityId: 1,
         userId: null,
@@ -79,8 +80,8 @@ class CreateStudents extends React.Component {
     }
 
     submit = () => {
-        const { name, genderId, unityId, userId, email, password } = this.state;
-        const student = { name, genderId, unityId, userId, email, password };
+        const { name, genderId, unityId, codeMatricula, userId, email, password } = this.state;
+        const student = { name, genderId, unityId, codeMatricula, userId, email, password };
 
         try {
             this.service.validar(student)
@@ -101,8 +102,8 @@ class CreateStudents extends React.Component {
     }
 
     atualizar = () => {
-        const { id, name, genderId, unityId, email, password } = this.state;
-        const student = { id, name, genderId, unityId, email, password };
+        const { id, name, genderId, unityId, codeMatricula, email, password } = this.state;
+        const student = { id, name, genderId, unityId, codeMatricula, email, password };
 
         this.service
             .atualizar(student)
@@ -142,7 +143,7 @@ class CreateStudents extends React.Component {
                 }
             >
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-6">
                         <FormGroup
                             id="inputName"
                             label="Nome: *"
@@ -153,6 +154,21 @@ class CreateStudents extends React.Component {
                                 className="form-control"
                                 name="name"
                                 value={this.state.name}
+                                onChange={this.handleChange}
+                            />
+                        </FormGroup>
+                    </div>
+                    <div className="col-md-6">
+                        <FormGroup
+                            id="inputCodeMatricula"
+                            label="Matrícula: *"
+                        >
+                            <input
+                                id="inputCodeMatricula"
+                                type="text"
+                                className="form-control"
+                                name="codeMatricula"
+                                value={this.state.codeMatricula}
                                 onChange={this.handleChange}
                             />
                         </FormGroup>

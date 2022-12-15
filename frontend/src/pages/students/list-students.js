@@ -28,7 +28,6 @@ class ListStudents extends React.Component {
         this.service
             .getAll()
             .then( response => {
-                console.warn(response);
                 this.setState({ students: response.data})
             }).catch(error => {
                 console.error(error.response)

@@ -26,6 +26,9 @@ export default class CoachService extends ApiService {
         if (!coach.unityId) {
             erros.push("Informe a Unidade.")
         }
+        if (!coach.codeCref) {
+            erros.push("Informe o Nr° do Cref.")
+        }
 
         if (!coach.email) {
             erros.push("Informe o E-mail.")
