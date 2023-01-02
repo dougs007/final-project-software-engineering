@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tb_appearance")
 public class Appearance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

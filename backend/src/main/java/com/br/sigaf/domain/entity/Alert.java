@@ -20,6 +20,7 @@ import java.time.LocalDate;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
+@Table(name = "tb_alert")
 public class Alert implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

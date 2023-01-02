@@ -1,9 +1,9 @@
-package com.br.sigaf.domain.exception;
+package com.br.sigaf.api.controller.exceptions;
 
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.Instant;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,8 +12,9 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class StandardError implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-    private LocalDate timestamp;
+    private Instant timestamp;
     private Integer status;
     private String error;
     private String message;

@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "tb_unity_plan")
 public class UnityPlan {
 
     @EmbeddedId

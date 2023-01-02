@@ -12,9 +12,10 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     boolean existsByEmail(String email);
+
     Optional<User> findByEmail(String email);
 
-//    RoleEnum.ROLE_COACH
+    //    RoleEnum.ROLE_COACH
     @Query(" from User a where a.roleId = 2")
     List<User> getCoaches();
 
