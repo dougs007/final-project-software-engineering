@@ -2,19 +2,17 @@ package com.br.sigaf.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -56,32 +54,25 @@ public class User implements UserDetails, Serializable {
 
     private Long unityId;
 
-    @JsonManagedReference
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<Alert> alerts;
+    private Set<Alert> alerts = new HashSet<>();
 
-    @JsonManagedReference
     @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
-    private List<Evaluation> evaluations;
+    private Set<Evaluation> evaluations;
 
-    @JsonManagedReference
     @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
-    private List<Appearance> appearances;
+    private Set<Appearance> appearances;
 
-    @JsonManagedReference
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private List<Signature> signatures;
+    private Set<Signature> signatures;
 
-    @JsonManagedReference
     @OneToMany(mappedBy="student", fetch = FetchType.LAZY)
-    private List<Exercise> exercises;
+    private Set<Exercise> exercises;
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
-        /*return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority()))
-                .collect(Collectors.toList());*/
     }
 
     @Override

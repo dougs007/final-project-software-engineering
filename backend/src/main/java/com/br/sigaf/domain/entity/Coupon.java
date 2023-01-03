@@ -1,6 +1,5 @@
 package com.br.sigaf.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,10 +24,9 @@ public class Coupon {
     private String name;
     private String description;
     private LocalDate dateCreated;
-    @Column(nullable = false, columnDefinition = "false")
-    private Boolean isValid;
+    @Column(nullable = false)
+    private boolean isValid = false;
 
-    @JsonManagedReference
     @OneToMany(mappedBy="coupon", fetch = FetchType.LAZY)
     private List<Signature> signatures;
 }
