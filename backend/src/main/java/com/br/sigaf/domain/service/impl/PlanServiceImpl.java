@@ -1,18 +1,10 @@
 package com.br.sigaf.domain.service.impl;
 
 import com.br.sigaf.domain.dto.PlanDTO;
-import com.br.sigaf.domain.dto.UserDTO;
 import com.br.sigaf.domain.entity.Plan;
-import com.br.sigaf.domain.entity.Unity;
-import com.br.sigaf.domain.entity.User;
-import com.br.sigaf.domain.enumerates.GenderEnum;
-import com.br.sigaf.domain.enumerates.RoleEnum;
 import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.repository.PlanRepository;
-import com.br.sigaf.domain.repository.UserRepository;
-import com.br.sigaf.domain.service.CoachService;
 import com.br.sigaf.domain.service.PlanService;
-import com.br.sigaf.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +30,7 @@ public class PlanServiceImpl implements PlanService {
         Plan plan = Plan.builder()
                 .name(planDTO.getName())
                 .description(planDTO.getDescription())
-                .value(planDTO.getValue())
+                .valuePlan(planDTO.getValuePlan())
                 .qtdDaysValidity(planDTO.getQtdDaysValidity())
                 .build();
 
@@ -58,7 +50,7 @@ public class PlanServiceImpl implements PlanService {
                 .id(id)
                 .name(planDTO.getName())
                 .description(planDTO.getDescription())
-                .value(planDTO.getValue())
+                .valuePlan(planDTO.getValuePlan())
                 .qtdDaysValidity(planDTO.getQtdDaysValidity())
                 .build();
 

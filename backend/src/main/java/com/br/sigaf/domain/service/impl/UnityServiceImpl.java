@@ -2,15 +2,10 @@ package com.br.sigaf.domain.service.impl;
 
 import com.br.sigaf.domain.dto.UnityDTO;
 import com.br.sigaf.domain.entity.Unity;
-import com.br.sigaf.domain.entity.User;
-import com.br.sigaf.domain.exception.AuthenticationError;
 import com.br.sigaf.domain.exception.RegraNegocioException;
 import com.br.sigaf.domain.repository.UnityRepository;
-import com.br.sigaf.domain.repository.UserRepository;
 import com.br.sigaf.domain.service.UnityService;
-import com.br.sigaf.domain.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

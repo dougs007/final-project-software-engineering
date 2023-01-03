@@ -2,9 +2,7 @@ package com.br.sigaf.domain.service;
 
 
 import com.br.sigaf.domain.dto.PlanDTO;
-import com.br.sigaf.domain.dto.UserDTO;
 import com.br.sigaf.domain.entity.Plan;
-import com.br.sigaf.domain.entity.User;
 
 import java.util.List;
 import java.util.Optional;

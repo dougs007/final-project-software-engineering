@@ -3,7 +3,6 @@ package com.br.sigaf.domain.service;
 
 import com.br.sigaf.domain.dto.UnityDTO;
 import com.br.sigaf.domain.entity.Unity;
-import com.br.sigaf.domain.entity.User;
 
 import java.util.List;
 import java.util.Optional;
